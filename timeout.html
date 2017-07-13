@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="flavors.css">
+    <script>
+      function addtext() {
+        setTimeout(function(){
+		  var text = document.getElementById('text');
+		  text.innerHTML += "FIRST ";
+		},20);
+        setTimeout(function(){
+		  var text = document.getElementById('text');
+		  text.innerHTML += "SECOND ";
+		},10);
+      }
+    </script>
+  </head>
+  <body>
+    <button onclick="addtext()">Click me</button>
+    <div id="text">
+    <div>
+  </body>
+</html>

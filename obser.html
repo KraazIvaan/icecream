@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/rxjs/4.1.0/rx.min.js"></script>
+    <script src="https://unpkg.com/rxjs/bundles/Rx.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="flavors.css">
+  </head>
+  <body>
+    <h1>Ice Cream Cone Creation</h1>
+    <div>
+      <p>Add a scoop of:</p>
+      <ul>
+        <li id="vanilla" class="add-list" onclick="setFlavor(this,'Vanilla')">Vanilla</li>
+        <li id="chocolate" class="add-list" onclick="setFlavor(this,'Chocolate')">Chocolate</li>
+        <li id="strawberry" class="add-list" onclick="setFlavor(this,'Strawberry')">Strawberry</li>
+      </ul>
+      <button type="button" value="add" id="add-button">Add Scoop</button>
+      <button type="button" value="add" id="done-button">All Done!</button>
+    </div>
+    <div>
+      <p>Your ice cream cone contains:</p>
+      <ul id="scoops">
+      </ul>
+    </div>
+    </body>
+    <script>
+      function setFlavor(t,flavor) {
+        var c = document.getElementById('chocolate');
+        var v = document.getElementById('vanilla');
+        var s = document.getElementById('strawberry');
+        c.classList.remove('selected');
+        v.classList.remove('selected');
+        s.classList.remove('selected');
+        t.classList.add('selected');
+        var addButton = document.getElementById('add-button');
+        addButton.value = flavor;
+      }
+
+	  var addButton = document.getElementById('add-button');
+	  var doneButton = document.getElementById('done-button');
+
+	  var source = Rx.Observable.fromEvent(addButton, 'click');
+
+	  var subscription = source.subscribe(
+	    x => {
+	      var scoops = document.getElementById("scoops");
+	      var flavor = x.view.addButton.value;
+	      scoops.innerHTML += "<li>"+flavor+"</ul>";
+	    },
+	    e => console.log('Error: '+e),
+	    () => console.log('Done')
+	  );
+
+	  doneButton.addEventListener("click", function() {subscription.dispose()});
+    </script>
+</html>

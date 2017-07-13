@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="flavors.css">
+    <script>
+      var flavors = ['vanilla','chocolate','strawberry'];
+
+      function displayMenuFunc() {
+        var menu = document.getElementById("menu");
+
+        flavors.forEach(function(flavor, index){
+          menu.innerHTML += "<li>" + index + ". " + flavor + "</li>";
+        });
+      }
+
+      function displayMenuArrow() {
+        var menu = document.getElementById("menu");
+
+        flavors.forEach((flavor, index) =>  {
+          menu.innerHTML += "<li>" + index + ". " + flavor + "</li>"
+        });
+      }
+
+      function clearMenu() {
+        var menu = document.getElementById("menu");
+        menu.innerHTML = "";
+      }
+
+    </script>
+  </head>
+  <body>
+    <h1>KING COUNTY CREAMERY</h1>
+    <button id="funcMenu" onclick="displayMenuFunc()">Display menu with regular function</button>
+    <button id="arrMenu" onclick="displayMenuArrow()">Display menu with arrow function</button>
+    <button id="cleaarMenu" onclick="clearMenu()">Clear menu</button>
+    <ul id="menu">
+    </ul>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+body {
+  font-family: "Arial";
+  font-size: 12px;
+  background-color: "#FFFFFF";
+}
+
+div {}
+
+li {
+  margin: 1px 1px 1px 1px;
+  padding: 1px 1px 1px 1px;
+}
+
+.add-list {
+  border: 1px solid black;
+  width: 100px;
+}
+
+.selected { background-color: #FFAAAA; }
